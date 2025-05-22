@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr30qfrxmq8nm"]
+
+[ext_resource type="PackedScene" uid="uid://qkpsdd55hf1o" path="res://assets/scenes/tile_map_layer.tscn" id="1_kpi06"]
+[ext_resource type="PackedScene" uid="uid://0o24k561ap3b" path="res://assets/scenes/player.tscn" id="2_dfgan"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_kpi06")]
+
+[node name="Player" parent="." instance=ExtResource("2_dfgan")]

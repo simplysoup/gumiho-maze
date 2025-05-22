@@ -78,6 +78,7 @@ size = Vector2(12, 13)
 [node name="Player" type="CharacterBody2D"]
 safe_margin = 0.001
 script = ExtResource("1_14505")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tuyoq")
@@ -88,7 +89,3 @@ position = Vector2(-3, 7)
 shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Bow" type="Marker2D" parent="."]
-top_level = true
-position = Vector2(-14, 2)

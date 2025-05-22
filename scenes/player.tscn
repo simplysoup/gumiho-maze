@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://0o24k561ap3b"]
+
+[ext_resource type="Script" uid="uid://dx2hihaglydqu" path="res://scenes/player.gd" id="1_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://cl4fpa4qqbl78" path="res://sprites/player/idle.jpg" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://bg0305rfex6t0" path="res://sprites/player/walk_down.jpg" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://d3wvwh28ibwvr" path="res://sprites/player/walk_left.jpg" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://51clvxsgi0f3" path="res://sprites/player/walk_right.jpg" id="5_b26j0"]
+[ext_resource type="Texture2D" uid="uid://bar50cxv7b0ow" path="res://sprites/player/walk_up.jpg" id="6_n7ghd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_n7ghd")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+safe_margin = 0.001
+script = ExtResource("1_2hs0m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tuyoq")
+animation = &"walk_right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3vyb7")
+one_way_collision = true

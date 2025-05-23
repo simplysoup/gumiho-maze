@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr30qfrxmq8nm"]
+[gd_scene load_steps=5 format=3 uid="uid://dr30qfrxmq8nm"]
 
-[ext_resource type="Script" uid="uid://dov2b2pcsmds7" path="res://assets/scenes/main.gd" id="1_dfgan"]
 [ext_resource type="PackedScene" uid="uid://qkpsdd55hf1o" path="res://assets/scenes/tile_map_layer.tscn" id="1_kpi06"]
+[ext_resource type="Script" uid="uid://dhivvq2f7st21" path="res://assets/scripts/main.gd" id="1_sfrgt"]
 [ext_resource type="PackedScene" uid="uid://0o24k561ap3b" path="res://assets/scenes/player.tscn" id="2_dfgan"]
+[ext_resource type="PackedScene" uid="uid://boei0kafl3jul" path="res://assets/scenes/coin.tscn" id="4_sfrgt"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_dfgan")
+script = ExtResource("1_sfrgt")
 
 [node name="Map" parent="." instance=ExtResource("1_kpi06")]
 
 [node name="Player" parent="." instance=ExtResource("2_dfgan")]
+
+[node name="Coin" parent="." instance=ExtResource("4_sfrgt")]
+position = Vector2(-177, -82)

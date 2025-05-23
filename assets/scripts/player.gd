@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
-@export var speed = 200
-@export var Arrow = preload("res://assets/scenes/arrow.tscn")
+@export var speed = 200.0
+@export var max_health = 1
+var Arrow = preload("res://assets/scenes/arrow.tscn")
 var screen_size
 var last_dir = Vector2.RIGHT
+var health = max_health
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	add_to_group("player")
 
 func _process(_delta: float) -> void:
 	if velocity.length() > 1:
@@ -38,14 +40,14 @@ func _process(_delta: float) -> void:
 	
 	move_and_slide()
 
-func shoot(position):
+func shoot(char_pos):
 	if Arrow == null:
 		print("Arrow scene not assigned!")
 		return
 	var arrow = Arrow.instantiate()
 	
 	get_tree().current_scene.add_child(arrow)
-	arrow.global_position = position
+	arrow.global_position = char_pos
 	if velocity.length() == 0:
 		arrow.rotation = last_dir.angle()
 		arrow.set_direction(last_dir)
@@ -53,3 +55,8 @@ func shoot(position):
 		arrow.rotation = velocity.angle()
 		arrow.set_direction(velocity)
 	
+func take_damage(dmg: int):
+	health -= dmg
+	$ProgressBar.set_value_no_signal(health*$ProgressBar.max_value/max_health)
+	if health <= 0:
+		queue_free()

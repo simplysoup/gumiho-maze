@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://51clvxsgi0f3"
-path="res://.godot/imported/walk_right.jpg-5f75fe90f17bb1f3ac00fb1baee78533.ctex"
+uid="uid://bynwm2qxbwdrv"
+path="res://.godot/imported/evil-idle-animation.png-72cd15314db0097a86792e0d12d3dc6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/walk_right.jpg"
-dest_files=["res://.godot/imported/walk_right.jpg-5f75fe90f17bb1f3ac00fb1baee78533.ctex"]
+source_file="res://assets/sprites/player/evil-idle-animation.png"
+dest_files=["res://.godot/imported/evil-idle-animation.png-72cd15314db0097a86792e0d12d3dc6c.ctex"]
 
 [params]
 

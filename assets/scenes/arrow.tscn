@@ -1,21 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbig0s55ywmt1"]
 
 [ext_resource type="Script" uid="uid://dqng2nvilbyow" path="res://assets/scripts/arrow.gd" id="1_7whpc"]
-[ext_resource type="Texture2D" uid="uid://bar50cxv7b0ow" path="res://assets/sprites/player/walk_up.jpg" id="1_k4pec"]
+[ext_resource type="Texture2D" uid="uid://c68qw5qgwx54n" path="res://assets/sprites/player/arrow.png" id="2_7whpc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7whpc"]
-size = Vector2(12, 11)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4pec"]
+size = Vector2(7, 8)
 
-[node name="Arrow" type="Area2D"]
+[node name="Arrow" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 10
+mass = 0.001
+gravity_scale = 0.0
 script = ExtResource("1_7whpc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 0)
-rotation = 1.57129
-shape = SubResource("RectangleShape2D_7whpc")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.38419e-07, 0)
-rotation = 1.57126
-scale = Vector2(0.375, 0.71875)
-texture = ExtResource("1_k4pec")
+rotation = 1.57079
+texture = ExtResource("2_7whpc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, 0)
+shape = SubResource("RectangleShape2D_k4pec")

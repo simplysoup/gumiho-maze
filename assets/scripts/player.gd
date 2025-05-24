@@ -28,10 +28,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("walk_right"):
 		velocity.x += 1
-		#$AnimatedSprite2D.play("walk_right")
+		$AnimatedSprite2D.play("walk_right")
 	if Input.is_action_pressed("walk_left"):
 		velocity.x -= 1
-		#$AnimatedSprite2D.play("walk_left")
+		$AnimatedSprite2D.play("walk_left")
 	if Input.is_action_pressed("walk_up"):
 		velocity.y -= 1
 		$AnimatedSprite2D.play("walk_up")
@@ -42,10 +42,14 @@ func _process(delta: float) -> void:
 		shoot(position + velocity.normalized())
 		
 	if velocity.length() == 0:
-		if last_dir.y >= 0:
+		if last_dir.y > 0 or last_dir.x == 0:
 			$AnimatedSprite2D.play("idle_down")
-		else:
+		if last_dir.y < 0:
 			$AnimatedSprite2D.play("idle_up")
+		if last_dir.y == 0 and last_dir.x > 0:
+			$AnimatedSprite2D.play("idle_right")
+		if last_dir.y == 0 and last_dir.x < 0:
+			$AnimatedSprite2D.play("idle_left")
 			
 	handle_knockback(delta)
 	

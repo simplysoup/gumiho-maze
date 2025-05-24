@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var value = 1
 var transitioned = false
 
 func _ready() -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpsdd55hf1o" path="res://assets/scenes/tile_map_layer.tscn" id="1_kpi06"]
 [ext_resource type="Script" uid="uid://dhivvq2f7st21" path="res://assets/scripts/main.gd" id="1_sfrgt"]
 [ext_resource type="PackedScene" uid="uid://0o24k561ap3b" path="res://assets/scenes/player.tscn" id="2_dfgan"]
-[ext_resource type="PackedScene" uid="uid://boei0kafl3jul" path="res://assets/scenes/coin.tscn" id="4_sfrgt"]
+[ext_resource type="PackedScene" uid="uid://b8svyl84080mc" path="res://assets/scenes/hud.tscn" id="5_etxf0"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_sfrgt")
@@ -12,5 +12,4 @@ script = ExtResource("1_sfrgt")
 
 [node name="Player" parent="." instance=ExtResource("2_dfgan")]
 
-[node name="Coin" parent="." instance=ExtResource("4_sfrgt")]
-position = Vector2(-177, -82)
+[node name="HUD" parent="." instance=ExtResource("5_etxf0")]

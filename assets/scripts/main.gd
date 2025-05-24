@@ -35,4 +35,4 @@ func spawn_enemy(player):
 func _enemy_died(enemy):
 	var coin = coin_scene.instantiate()
 	coin.position = enemy.position
-	add_child(coin)
+	call_deferred("add_child", coin)

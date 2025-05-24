@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var max_health = 3
 @export var speed = 100.0
+@export var damage = 1
 var health
 var knockback_timer = 0
 var knockback_vector = Vector2.ZERO

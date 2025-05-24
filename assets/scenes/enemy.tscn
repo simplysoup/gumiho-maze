@@ -182,7 +182,7 @@ metadata/_edit_lock_ = true
 position = Vector2(2, -3)
 sprite_frames = SubResource("SpriteFrames_t2q6g")
 animation = &"idle_down"
-frame_progress = 0.715138
+frame_progress = 0.579676
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kbpvo")

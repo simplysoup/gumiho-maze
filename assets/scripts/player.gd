@@ -2,19 +2,23 @@ extends CharacterBody2D
 
 @export var speed = 200.0
 @export var max_health = 1
+@export var knockback = 30
 var Arrow = preload("res://assets/scenes/arrow.tscn")
 var screen_size
 var last_dir = Vector2.RIGHT
 var health = max_health
 var coins = 0
+var knockback_timer = 0
+var knockback_vector = Vector2.ZERO
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	add_to_group("player")
 	
 	$PickupArea.connect("area_entered", Callable(self, "_on_area_entered"))
+	$PickupArea.connect("body_entered", Callable(self, "_on_body_entered"))
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if velocity.length() > 1:
 		last_dir = velocity
 	else:
@@ -37,7 +41,12 @@ func _process(_delta: float) -> void:
 		shoot(position + velocity.normalized())
 		
 	if velocity.length() == 0:
-		$AnimatedSprite2D.play("idle")
+		if last_dir.y >= 0:
+			$AnimatedSprite2D.play("idle_down")
+		else:
+			$AnimatedSprite2D.play("idle_up")
+			
+	handle_knockback(delta)
 	
 	velocity = velocity.normalized() * speed
 	
@@ -48,6 +57,11 @@ func _on_area_entered(area):
 		coins += 1
 		area.queue_free()
 		print("Coins: %d" % coins)
+
+func _on_body_entered(body):
+	if body.is_in_group("enemy"):
+		body.apply_knockback(position, 1000)
+		apply_knockback(body.position, 1000)
 
 func shoot(char_pos):
 	if Arrow == null:
@@ -62,9 +76,20 @@ func shoot(char_pos):
 	else:
 		arrow.rotation = velocity.angle()
 		arrow.set_direction(velocity)
-	
+		
+func handle_knockback(delta):
+	if knockback_timer > 0:
+		knockback_timer -= delta
+		velocity += knockback_vector
+		knockback_vector = knockback_vector * 0.5	
+
 func take_damage(dmg: int):
 	health -= dmg
 	$ProgressBar.set_value_no_signal(health*$ProgressBar.max_value/max_health)
 	if health <= 0:
 		queue_free()
+
+func apply_knockback(from_position: Vector2, strength := 500.0, duration = 0.2):
+	var direction = (position - from_position).normalized()
+	knockback_timer = duration
+	knockback_vector = direction * strength
